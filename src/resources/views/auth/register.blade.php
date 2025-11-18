@@ -1,7 +1,13 @@
-v@extends('layouts.app')
+@extends('layouts.app')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+@endsection
+
+@section('nav')
+<form action="/login" method="get">
+    <button class="header-nav__button">login</button>
+</form>
 @endsection
 
 @section('content')

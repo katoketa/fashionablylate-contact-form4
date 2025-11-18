@@ -4,6 +4,12 @@
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 @endsection
 
+@section('nav')
+<form action="/register" method="get">
+    <button class="header-nav__button">register</button>
+</form>
+@endsection
+
 @section('content')
 <div class="login-page">
     <div class="login-page__title">
@@ -15,7 +21,7 @@
             <div class="login-form__header">メールアドレス</div>
             <input type="email" name="email" placeholder="例: test@example.com" class="login-form__input" value="{{ old('email') }}">
             <div class="login-form__header">パスワード</div>
-            <input type="password" name="password" placeholder="例: coachtech1106" class="login-form__input" value="{{ old('password') }}">
+            <input type="password" name="password" placeholder="例: coachtech1106" class="login-form__input">
             <div class="login-form__button">
                 <button type="submit" class="login-form__button-submit">ログイン</button>
             </div>
