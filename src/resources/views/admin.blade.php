@@ -4,6 +4,15 @@
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 @endsection
 
+@section('nav')
+@if (Auth::check())
+<form action="/logout" method="post">
+    @csrf
+    <button class="nav__button">logout</button>
+</form>
+@endif
+@endsection
+
 @section('content')
 <div class="admin-page">
     <div class="admin-page__title">

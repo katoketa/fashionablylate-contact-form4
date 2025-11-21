@@ -1,7 +1,14 @@
-v@extends('layouts.app')
+@extends('layouts.app')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+@endsection
+
+@section('nav')
+<form action="/login" method="get">
+    @csrf
+    <button class="nav__button">login</button>
+</form>
 @endsection
 
 @section('content')
@@ -10,13 +17,16 @@ v@extends('layouts.app')
         <h2 class="register-page__title-text">Register</h2>
     </div>
     <form action="/register" method="post" class="register-form">
+        @csrf
         <div class="register-form__inner">
             <div class="register-form__header">お名前</div>
             <input type="text" name="name" class="register-form__input" value="{{ old('name') }}" placeholder="例: 山田 太郎">
             <div class="register-form__header">メールアドレス</div>
             <input type="email" name="email" class="register-form__input" value="{{ old('email') }}" placeholder="例: test@example.com">
             <div class="register-form__header">パスワード</div>
-            <input type="password" name="password" class="register-form__input" value="{{ old('password') }}" placeholder="例: coachtech1106">
+            <input type="password" name="password" class="register-form__input" placeholder="例: coachtech1106">
+            <div class="register-form__header">確認用パスワード</div>
+            <input type="password" name="password_confirmation" class="register-form__input" placeholder="例: coachtech1106">
             <div class="register-form__button">
                 <button type="submit" class="register-form__button-submit">登録</button>
             </div>
