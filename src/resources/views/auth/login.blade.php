@@ -4,6 +4,13 @@
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 @endsection
 
+@section('nav')
+<form action="/register" method="get">
+    @csrf
+    <button class="nav__button">register</button>
+</form>
+@endsection
+
 @section('content')
 <div class="login-page">
     <div class="login-page__title">
