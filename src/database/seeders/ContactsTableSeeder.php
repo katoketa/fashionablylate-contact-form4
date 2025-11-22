@@ -14,6 +14,8 @@ class ContactsTableSeeder extends Seeder
      */
     public function run()
     {
+
+
         $param = [
             'category_id' => 2,
             'first_name' => '太郎',
