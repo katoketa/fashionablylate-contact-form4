@@ -18,10 +18,10 @@ use App\Http\Controllers\UserController;
 Route::get('/', [ContactController::class, 'index']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'thanks']);
-Route::get('/search', [ContactController::class, 'search']);
 Route::delete('/delete', [ContactController::class, 'destroy']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/reset', [ContactController::class, 'admin']);
     Route::get('/admin', [ContactController::class, 'admin']);
+    Route::post('/search', [ContactController::class, 'search']);
 });
