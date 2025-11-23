@@ -19,9 +19,9 @@
         <h2 class="admin-page__title-text">Admin</h2>
     </div>
     <div class="contacts-search">
-        <form action="/search" method="get" class="search-form">
+        <form action="/search" method="post" class="search-form">
             @csrf
-            <input type="text" name="keyword" class="search__keyword" placeholder="名前やメールアドレスを入力してください" value="{{ old('keyword') }}">
+            <input type="text" name="keyword" class="search__keyword" placeholder="名前やメールアドレスを入力してください" @if (isset($old_data)) value="{{ $old_data['keyword'] }}" @endif>
             <div class="search__gender">
                 <select name="gender" class="search__gender-select">
                     <option value="" selected hidden>性別</option>
@@ -42,7 +42,6 @@
             <button type="submit" class="search-form__button">検索</button>
         </form>
         <form action="/reset" method="get" class="search-reset">
-            @csrf
             <button type="submit" class="search-reset__button">リセット</button>
         </form>
     </div>
