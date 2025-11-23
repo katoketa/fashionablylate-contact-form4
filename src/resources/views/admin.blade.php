@@ -19,30 +19,31 @@
         <h2 class="admin-page__title-text">Admin</h2>
     </div>
     <div class="contacts-search">
-        <form action="/search" method="post" class="search-form">
-            @csrf
-            <input type="text" name="keyword" class="search__keyword" placeholder="名前やメールアドレスを入力してください" @if (isset($old_data)) value="{{ $old_data['keyword'] }}" @endif>
+        <form action="/search" method="get" class="search-form">
+            <input type="text" name="keyword" class="search__keyword" placeholder="名前やメールアドレスを入力してください" @if (isset($old_data['keyword'])) value="{{ $old_data['keyword'] }}" @endif>
             <div class="search__gender">
                 <select name="gender" class="search__gender-select">
                     <option value="" selected hidden>性別</option>
-                    <option value="1">男性</option>
-                    <option value="2">女性</option>
-                    <option value="3">その他</option>
+                    <option value="">全て</option>
+                    <option value="1" @if (isset($old_data['gender']) && $old_data['gender'] == "1") selected @endif>男性</option>
+                    <option value="2" @if (isset($old_data['gender']) && $old_data['gender'] == "2") selected @endif>女性</option>
+                    <option value="3" @if (isset($old_data['gender']) && $old_data['gender'] == "3") selected @endif>その他</option>
                 </select>
             </div>
             <div class="search__category">
                 <select name="category_id" class="search__category-select">
                     <option value="" selected hidden>お問い合わせの種類</option>
+                    <option value="">全て</option>
                     @foreach ($categories as $category)
-                    <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                    <option value="{{ $category['id'] }}" @if (isset($old_data['category_id']) && $old_data['category_id'] == $category['id']) selected @endif>{{ $category['content'] }}</option>
                     @endforeach
                 </select>
             </div>
-            <input type="date" name="created_at" class="search__date" placeholder="年/月/日" value="{{ old('created_at') }}">
+            <input type="date" name="created_at" class="search__date" @if (isset($old_data['created_at'])) value="{{ $old_data['created_at'] }}" @endif>
             <button type="submit" class="search-form__button">検索</button>
         </form>
         <form action="/reset" method="get" class="search-reset">
-            <button type="submit" class="search-reset__button">リセット</button>
+            <button class="search-reset__button">リセット</button>
         </form>
     </div>
     <div class="admin-utilities">
