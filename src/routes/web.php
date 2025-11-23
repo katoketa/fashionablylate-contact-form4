@@ -23,5 +23,5 @@ Route::delete('/delete', [ContactController::class, 'destroy']);
 Route::middleware('auth')->group(function () {
     Route::get('/reset', [ContactController::class, 'admin']);
     Route::get('/admin', [ContactController::class, 'admin']);
-    Route::post('/search', [ContactController::class, 'search']);
+    Route::get('/search', [ContactController::class, 'search']);
 });
