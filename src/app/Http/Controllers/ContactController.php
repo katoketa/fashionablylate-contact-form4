@@ -47,7 +47,14 @@ class ContactController extends Controller
     {
         $old_data = $request->all();
         unset($old_data['_token']);
-        $contacts = Contact::with('category')->KeywordSearch($request->keyword)->GenderSearch($request->gender)->CategoryIdSearch($request->category_id)->CreatedAtSearch($request->created_at)->paginate(8);
+        $contacts = Contact::with('category');
+        $keyword = str_replace("　", " ", $request->keyword);
+        $keywords = explode(" ", $keyword);
+        foreach ($keywords as $keyword) {
+            $contacts = $contacts->KeywordSearch($keyword);
+        }
+        $contacts = $contacts->get();
+        $contacts = $contacts->GenderSearch($request->gender)->CategoryIdSearch($request->category_id)->CreatedAtSearch($request->created_at)->paginate(8);
         $categories = Category::all();
         return view('admin', compact('contacts', 'categories', 'old_data'));
     }
