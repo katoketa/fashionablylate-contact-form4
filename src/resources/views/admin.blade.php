@@ -84,7 +84,10 @@
             <td class="contacts-table__item">{{ $contact['email'] }}</td>
             <td class="contacts-table__item">{{ $contact['category']['content'] }}</td>
             <td class="contacts-table__item">
-                <button wire:click="openModal()" class="contacts-table__open-modal">詳細</button>
+                <form action="/" method="get">
+                    <input type="hidden" name="id" value="{{ $contact['id'] }}">
+                    <button type="submit" class="contacts-table__open-modal">詳細</button>
+                </form>
             </td>
         </tr>
         @endforeach
