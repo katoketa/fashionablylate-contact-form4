@@ -197,10 +197,18 @@ svg.w-5.h-5 {
     margin-right: 15px;
 }
 
-.contacts-table__open-modal {
+.modal__open {
     padding: 7px 20px;
     border: 1px solid #f4efea;
     background: #fcfcfc;
     color: #d9c6b5;
     cursor: pointer;
+}
+
+.modal__inner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ddd;
 }

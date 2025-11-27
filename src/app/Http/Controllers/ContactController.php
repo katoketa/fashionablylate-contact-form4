@@ -53,7 +53,6 @@ class ContactController extends Controller
         foreach ($keywords as $keyword) {
             $contacts = $contacts->KeywordSearch($keyword);
         }
-        $contacts = $contacts->get();
         $contacts = $contacts->GenderSearch($request->gender)->CategoryIdSearch($request->category_id)->CreatedAtSearch($request->created_at)->paginate(8);
         $categories = Category::all();
         return view('admin', compact('contacts', 'categories', 'old_data'));
