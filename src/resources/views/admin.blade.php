@@ -84,7 +84,7 @@
             <td class="contacts-table__item">{{ $contact['email'] }}</td>
             <td class="contacts-table__item">{{ $contact['category']['content'] }}</td>
             <td class="contacts-table__item">
-                <button wire:click="openModal()" class="contacts-table__open-modal">詳細</button>
+                @livewire('modal', ['contact' => $contact, 'category_name' => $contact['category']['content']])
             </td>
         </tr>
         @endforeach
