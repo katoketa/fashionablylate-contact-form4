@@ -207,8 +207,35 @@ svg.w-5.h-5 {
 
 .modal__inner {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 50px;
+    left: 50px;
+    width: 70%;
     background: #fff;
     border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.modal__close {
+    text-align: right;
+}
+
+.modal__close-button {
+
+}
+
+.modal-table__header {
+    width: 40%;
+}
+
+.modal-table__row {
+
+}
+
+.contact-delete {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contact-delete__submit {
+
 }
