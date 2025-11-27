@@ -3,7 +3,9 @@
 
     @if($showModal)
     <div class="modal__inner">
-        <button wire:click="closeModal()" class="modal__close">×</button>
+        <div class="modal__close">
+            <button wire:click="closeModal()" class="modal__close-button">×</button>
+        </div>
         <table class="modal-table">
             <tr class="modal-table__row">
                 <th class="modal-table__header">お名前</th>
@@ -50,11 +52,11 @@
                 <td class="modal-table__item">{{ $contact['detail'] }}</td>
             </tr>
         </table>
-        <form action="/delete" method="post">
+        <form class="contact-delete" action="/delete" method="post">
             @method('DELETE')
             @csrf
-            <input class="modal__delete-contact" type="hidden" name="id" value="{{ $contact['id'] }}">
-            <button type="submit">削除</button>
+            <input type="hidden" name="id" value="{{ $contact['id'] }}">
+            <button class="contact-delete__submit" type="submit">削除</button>
         </form>
     </div>
     @endif
